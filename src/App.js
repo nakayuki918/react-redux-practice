@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-    return ( <div className="App"><h1>hello world</h1></div> );
+    return (
+      <h1 className="App">hello world</h1>
+    );
   }
 }
 
