@@ -7,13 +7,32 @@ import React, { Component } from 'react';
 //       <React.Fragment>
 //         <label htmlFor="bar">bar</label>
 //         <input type="text" onChange={(e) => {console.log(e)} }/>
-//       </React.Fragment>
+//       </React.Fragm  ent>
 //     );
 //   }
 // }
 
 const App = () => {
-  return <div>Hi!</div>
+  const profiles = [
+    {name: 'taro', age: '18'},
+    {name: 'hanako'}
+  ];
+  return (
+    <div>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+    </div>
+  )
 };
+const User = (props) => {
+  return <div>{props.name}, {props.age}</div>
+};
+
+User.defaultProps = {
+  age: 1
+}
 
 export default App;
