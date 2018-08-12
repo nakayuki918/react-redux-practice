@@ -5,7 +5,7 @@ export const increment = () => ({
     type: INCREMENT
 })
 
-export decrement = () =>  ({
+export const decrement = () =>  ({
   type: DECREMENT
 })
 
