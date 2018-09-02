@@ -16,15 +16,14 @@ class EventsNew extends Component {
     const { input, label, type, meta: {touched, error} } = field
 
     return(
-      <TextField
-        hintText = {label}
-        floatingLabelText = {label}
-        type = {type}
-        errorText= {touched && error}
-        {...input}
-        fullWidth={true}
-      >
-      </TextField>
+      <div>
+        <input
+          {...input}
+          placeholder = {label}
+          type = {type} />
+          {touched && error && <span>{error} </span>}
+      </div>
+
     )
   }
 
@@ -45,8 +44,8 @@ class EventsNew extends Component {
         <div>
           <Field label="Body" name="body" type="text" component={this.renderField} />
         </div>
-        <RaisedButton label="submit" type="submit"  style={style} disabled={pristine|| submitting ||invalid} />
-        <RaisedButton label="Cancel"  style={style} containerElement={<Link to="/" />} />
+        <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
+        <Link to="/" >Cancel</Link>
       </form>
     )
   }

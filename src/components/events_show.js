@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
 
 import { getEvent, deleteEvent, putEvent } from "../actions/index";
+
+import styled from 'styled-components';
 
 class EventsShow extends Component {
   constructor(props) {
@@ -17,15 +17,13 @@ class EventsShow extends Component {
     const { input, label, type, meta: {touched, error} } = field
 
     return(
-      <TextField
-        hintText = {label}
-        floatingLabelText = {label}
-        type = {type}
-        errorText= {touched && error}
-        {...input}
-        fullWidth={true}
-      >
-      </TextField>
+      <div>
+        <input
+          {...input}
+          placeholder = {label}
+          type = {type} />
+        {touched && error && <span>{error} </span>}
+      </div>
     )
   }
 
@@ -47,20 +45,19 @@ class EventsShow extends Component {
 
   render() {
     const { handleSubmit, pristine, submitting, invalid } = this.props;
-    const style = {margin: 12}
 
     return(
-      <form onSubmit={handleSubmit(this.onSubmit)}>
+      <Form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
           <Field label="Title" name="title" type="text" component={this.renderField} />
         </div>
         <div>
           <Field label="Body" name="body" type="text" component={this.renderField} />
         </div>
-        <RaisedButton label="submit" type="submit"  style={style} disabled={pristine|| submitting ||invalid} />
-        <RaisedButton label="Cancel"  style={style} containerElement={<Link to="/" />} />
-        <RaisedButton label="Delete"  style={style} onClick={this.onDeleteClick} />
-      </form>
+        <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
+        <Link to="/" >Cancel</Link>
+        <Link to="/" onClick={this.onDeleteClick} >Delete</Link>
+      </Form>
     )
   }
 }

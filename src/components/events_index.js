@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import { readEvents } from "../actions/index";
 
 class EventsIndex extends Component {
@@ -21,44 +11,34 @@ class EventsIndex extends Component {
 
   renderEvents() {
     return _.map(this.props.events, event => (
-      <TableRow key={event.id} >
-        <TableRowColumn>{event.id}</TableRowColumn>
-        <TableRowColumn>
+      <tr key={event.id} >
+        <td>{event.id}</td>
+        <td>
           <Link to={`/events/${event.id}`}>
             {event.title }
           </Link>
-        </TableRowColumn>
-        <TableRowColumn>{event.body}</TableRowColumn>
-      </TableRow>
+        </td>
+        <td>{event.body}</td>
+      </tr>
     ))
   }
   render() {
-    const style = {
-      position: 'fixed',
-      right: '12px',
-      bottom: '12px'
-    }
     return(
       <React.Fragment>
-        <FloatingActionButton style={style} containerElement={<Link to='/events/new' />}>
-          <ContentAdd/>
-        </FloatingActionButton>
+        <Link to='/events/new'>new event</Link>
 
-        <Table>
-          <TableHeader
-            displaySelectAll = {false}
-            adjustForCheckbox = {false}
-          >
-          <TableRow>
-            <TableHeaderColumn>ID</TableHeaderColumn>
-            <TableHeaderColumn>Title</TableHeaderColumn>
-            <TableHeaderColumn>Body</TableHeaderColumn>
-          </TableRow>
-          </TableHeader>
-          <TableBody displayRowCheckbox = {false} >
+        <table>
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+          </thead>
+          <tbody>
           {this.renderEvents()}
-          </TableBody>
-        </Table>
+          </tbody>
+        </table>
       </React.Fragment>
     )
   }
