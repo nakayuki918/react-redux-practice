@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { readEvents } from "../actions/index";
+import { readEvents } from "../../actions/index";
 
 class EventsIndex extends Component {
   componentDidMount() {

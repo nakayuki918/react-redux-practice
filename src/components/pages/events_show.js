@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom';
 
-import { getEvent, deleteEvent, putEvent } from "../actions/index";
+import { getEvent, deleteEvent, putEvent } from "../../actions/index";
 
 import styled from 'styled-components';
 
@@ -47,7 +47,7 @@ class EventsShow extends Component {
     const { handleSubmit, pristine, submitting, invalid } = this.props;
 
     return(
-      <Form onSubmit={handleSubmit(this.onSubmit)}>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
           <Field label="Title" name="title" type="text" component={this.renderField} />
         </div>
@@ -57,7 +57,7 @@ class EventsShow extends Component {
         <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
         <Link to="/" >Cancel</Link>
         <Link to="/" onClick={this.onDeleteClick} >Delete</Link>
-      </Form>
+      </form>
     )
   }
 }

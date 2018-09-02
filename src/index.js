@@ -7,9 +7,9 @@ import './index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import reducer from './reducers';
-import EventsIndex from './components/events_index';
-import EventsNew from './components/events_new';
-import EventsShow from './components/events_show';
+import EventsIndex from './components/pages/events_index';
+import EventsNew from './components/pages/events_new';
+import EventsShow from './components/pages/events_show';
 import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { composeWithDevTools } from 'redux-devtools-extension';
